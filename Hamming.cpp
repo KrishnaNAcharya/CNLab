@@ -22,21 +22,29 @@ void correct(int h[7])
     }
     
     printf("Code: ");
-    for(int i=6; i>=0; i--) printf("%d", h[i]);
+    for(int i=6; i>=0; i--) 
+        printf("%d", h[i]);
+    
     printf("\n");
 }
 
-int main() {
+int main() 
+{
     int d[4], h[7];
+    
     printf("Data: ");
-    for(int i=0; i<4; i++) scanf("%1d", &d[i]);
+    for(int i=0; i<4; i++) 
+        scanf("%1d", &d[i]);
     
     encode(d, h);
+    
     printf("Hamming: ");
-    for(int i=6; i>=0; i--) printf("%d", h[i]);
+    for(int i=6; i>=0; i--) 
+        printf("%d", h[i]);
     
     printf("\nReceived: ");
-    for(int i=6; i>=0; i--) scanf("%1d", &h[i]);
+    for(int i=6; i>=0; i--) 
+        scanf("%1d", &h[i]);
     
     correct(h);
     return 0;

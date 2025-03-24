@@ -11,12 +11,12 @@ typedef struct
 
 int main() 
 {
-    char m[100];
-    printf("Msg: ");
+    char m[100]; 
+    printf("Msg: "); 
     fgets(m, sizeof(m), stdin);
 
-    int n = (strlen(m) + 2) / 3;
-    P *p = (P *)malloc(n * sizeof(P));
+    int n = (strlen(m) + 2) / 3; 
+    P *p = (P*)malloc(n * sizeof(P));
 
     for (int i = 0; i < n; i++) 
     {
@@ -25,35 +25,26 @@ int main()
     }
 
     printf("Packet No.  Data\n\n");
-    for (int i = 0; i < n; i++) 
-    {
-        printf("%d:%s\n", p[i].id, p[i].t);
-    }
+    for (int i = 0; i < n; i++) printf("%d:%s\n", p[i].id, p[i].t);
 
-    srand(time(NULL));
+    srand(time(0));
     for (int i = n - 1; i > 0; i--) 
     {
         int j = rand() % (i + 1);
-        P temp = p[i]; 
-        p[i] = p[j]; 
+        P temp = p[i];
+        p[i] = p[j];
         p[j] = temp;
     }
 
-    printf("\nPackets Received: ");
-    for (int i = 0; i < n; i++) 
-    {
-        printf("%d ", p[i].id);
-    }
-    
-    printf("\nPackets in order: ");
-    for (int i = 1; i <= n; i++) 
-    {
-        printf("%d ", i);
-    }
+    printf("\nPackets Received: "); 
+    for (int i = 0; i < n; i++) printf("%d ", p[i].id);
+
+    printf("\nPackets in order: "); 
+    for (int i = 1; i <= n; i++) printf("%d ", i);
 
     free(p);
-    return 0;
 }
+
 
 
 

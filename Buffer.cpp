@@ -13,44 +13,48 @@ int main()
 {
     char m[100];
     printf("Msg: ");
-    fgets(m, 100, stdin);
+    fgets(m, sizeof(m), stdin);
 
     int n = (strlen(m) + 2) / 3;
     P *p = (P *)malloc(n * sizeof(P));
 
     for (int i = 0; i < n; i++) 
     {
-        p[i].id = i + 1;
-        strncpy(p[i].t, m + i * 3, 3);
-        p[i].t[3] = '\0'; 
+        p[i] = (P){i + 1, ""};
+        memcpy(p[i].t, m + i * 3, 3);
     }
 
     printf("Packet No.  Data\n\n");
-    for (int i = 0; i < n; i++)
-    { 
-        printf("%d:%s ", p[i].id, p[i].t);
-        printf("\n");
+    for (int i = 0; i < n; i++) 
+    {
+        printf("%d:%s\n", p[i].id, p[i].t);
     }
 
     srand(time(NULL));
     for (int i = n - 1; i > 0; i--) 
     {
         int j = rand() % (i + 1);
-        P temp = p[i];
-        p[i] = p[j];
+        P temp = p[i]; 
+        p[i] = p[j]; 
         p[j] = temp;
     }
 
     printf("\nPackets Received: ");
     for (int i = 0; i < n; i++) 
+    {
         printf("%d ", p[i].id);
-
-    printf("\nPackets in order: ");
-    for (int i = 0; i < n; i++) 
-        printf("%d ", i + 1);
+    }
     
+    printf("\nPackets in order: ");
+    for (int i = 1; i <= n; i++) 
+    {
+        printf("%d ", i);
+    }
+
+    free(p);
     return 0;
 }
+
 
 
 //Example

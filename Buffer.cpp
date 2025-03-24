@@ -13,8 +13,7 @@ int main()
 {
     char m[100];
     printf("Msg: ");
-    fgets(m, sizeof(m), stdin);
-    m[strcspn(m, "\n")] = 0;  
+    fgets(m, 100, stdin);
 
     int n = (strlen(m) + 2) / 3;
     P *p = (P *)malloc(n * sizeof(P));
@@ -52,6 +51,7 @@ int main()
     
     return 0;
 }
+
 
 //Example
 // Msg: A computer network is a set of devices connected through links

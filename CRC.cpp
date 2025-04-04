@@ -6,18 +6,12 @@ int main()
     char data[128], gen[32], code[160], rem[32], recv[160];
     int pos, test;
     
-    printf("No of bits: ");
-    scanf("%d", &test);
-    printf("Data: ");
-    scanf("%s", data);
-    printf("Gen: ");
-    scanf("%s", gen);
+    printf("Enter No of bits, Data, Gen: ");
+    scanf("%d %s %s", &test, data, gen);    
     
-    // Append zeros to data
     sprintf(code, "%s%0*d", data, strlen(gen) - 1, 0);
     printf("Modified data: %s\n", code);
 
-    // CRC Calculatio
     int glen = strlen(gen);
     int mlen = strlen(code) - glen + 1;
     
@@ -52,9 +46,7 @@ int main()
 
 
 //Example
-// No of bits: 8
-// Data: 11010011101100
-// Gen: 1011
+// Enter No of bits, Data, Gen: 8 11010011101100 1011
 // Modified data: 11010011101100000
 // Checksum: 100
 // Final codeword: 11010011101100100

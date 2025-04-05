@@ -3,6 +3,7 @@ set ns [new Simulator]
 # Open trace files
 set nf [open out.nam w]
 $ns namtrace-all $nf
+
 proc finish {} {
     global ns nf
     $ns flush-trace

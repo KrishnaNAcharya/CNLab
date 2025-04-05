@@ -28,16 +28,15 @@ int main()
         rem[glen - 1] = code[i + glen];
     }
     rem[glen] = '\0';
+    strcpy(code + strlen(data), rem);
+    strcpy(recv, code);
     
     printf("Checksum: %s\n", rem);
-
-    strcpy(code + strlen(data), rem);
     printf("Final codeword: %s\n", code);
 
     printf("Error position: ");
     scanf("%d", &pos);
     
-    strcpy(recv, code);
     recv[pos] = (recv[pos] == '0') ? '1' : '0';
     printf("Data with error: %s\n", recv);
 

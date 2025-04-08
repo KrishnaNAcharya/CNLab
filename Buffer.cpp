@@ -1,3 +1,6 @@
+//1. Write a program for error detecting code using CRC-CCITT (16-bits)
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

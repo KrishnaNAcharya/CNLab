@@ -1,3 +1,5 @@
+//5. Write a program for a distance vector algorithm to find a suitable path for transmission.
+
 #include <stdio.h>
 #define INF 999
 

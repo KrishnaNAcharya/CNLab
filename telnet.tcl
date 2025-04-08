@@ -1,3 +1,5 @@
+#Simulate the different types of Internet traffic such as FTP a TELNET over a network and analyze the throughput
+
 set ns [new Simulator]
 
 # Open trace files

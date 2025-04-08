@@ -1,4 +1,5 @@
 //2. Write a program for Hamming Code generation for error detection and correction
+
 #include <stdio.h>
 
 int main() 

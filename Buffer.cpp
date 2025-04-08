@@ -1,4 +1,4 @@
-//1. Write a program for error detecting code using CRC-CCITT (16-bits)
+//3. Write a program for frame sorting techniques used in buffers. 
 
 
 #include <stdio.h>

@@ -53,41 +53,90 @@ int main()
 
 
 // Example
-// Packets: 4
-// Time & Size: 1 5
-// Time & Size: 2 6
-// Time & Size: 3 8
-// Time & Size: 4 6
-// Bucket size & Out rate: 12 2
+// Enter number of packets: 3
+// Enter packets in order of their arrival time: 
+// Enter time and size of packet 1: 1 4
+// Enter time and size of packet 2: 2 6
+// Enter time and size of packet 3: 4 8
+// Enter bucket size and output rate: 10 5
+//  At time 1
+// Inserted 4 bytes
+// Sent packet of 4 bytes
+// In bucket: 0 bytes
+//  At time 2
+// Inserted 6 bytes
+// Sent packet of 5 bytes
+// In bucket: 1 bytes
+//  At time 3
+// Sent packet of 1 bytes
+// In bucket: 0 bytes
+//  At time 4
+// Inserted 8 bytes
+// Sent packet of 5 bytes
+// In bucket: 3 bytes
+//  At time 5
+// Sent packet of 3 bytes
+// In bucket: 0 bytes
 
-// Time 1
+
+
+// Enter number of packets: 4
+// Enter packets in order of their arrival time: 
+// Enter time and size of packet 1: 1 6
+// Enter time and size of packet 2: 2 7
+// Enter time and size of packet 3: 3 5
+// Enter time and size of packet 4: 4 4
+// Enter bucket size and output rate: 10 4
+//  At time 1
+// Inserted 6 bytes
+// Sent packet of 4 bytes
+// In bucket: 2 bytes
+//  At time 2
+// Inserted 7 bytes
+// Sent packet of 4 bytes
+// In bucket: 5 bytes
+//  At time 3
 // Inserted 5 bytes
-// Sent 2 bytes
-// In bucket: 3
-// Time 2
-// Inserted 6 bytes
-// Sent 2 bytes
-// In bucket: 7
-// Time 3
-// Dropped 8 bytes
-// Sent 2 bytes
-// In bucket: 5
-// Time 4
-// Inserted 6 bytes
-// Sent 2 bytes
-// In bucket: 9
-// Time 5
-// Sent 2 bytes
-// In bucket: 7
-// Time 6
-// Sent 2 bytes
-// In bucket: 5
-// Time 7
-// Sent 2 bytes
-// In bucket: 3
-// Time 8
-// Sent 2 bytes
-// In bucket: 1
-// Time 9
-// Sent 1 bytes
-// In bucket: 0
+// Sent packet of 4 bytes
+// In bucket: 6 bytes
+//  At time 4
+// Inserted 4 bytes
+// Sent packet of 4 bytes
+// In bucket: 6 bytes
+//  At time 5
+// Sent packet of 4 bytes
+// In bucket: 2 bytes
+//  At time 6
+// Sent packet of 2 bytes
+// In bucket: 0 bytes
+
+
+
+
+// Enter number of packets: 3
+// Enter packets in order of their arrival time: 
+// Enter time and size of packet 1: 1 10
+// Enter time and size of packet 2: 2 5
+// Enter time and size of packet 3: 3 3
+// Enter bucket size and output rate: 15 3
+//  At time 1
+// Inserted 10 bytes
+// Sent packet of 3 bytes
+// In bucket: 7 bytes
+//  At time 2
+// Inserted 5 bytes
+// Sent packet of 3 bytes
+// In bucket: 9 bytes
+//  At time 3
+// Inserted 3 bytes
+// Sent packet of 3 bytes
+// In bucket: 9 bytes
+//  At time 4
+// Sent packet of 3 bytes
+// In bucket: 6 bytes
+//  At time 5
+// Sent packet of 3 bytes
+// In bucket: 3 bytes
+//  At time 6
+// Sent packet of 3 bytes
+// In bucket: 0 bytes

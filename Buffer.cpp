@@ -15,7 +15,7 @@ typedef struct
 int main() 
 {
     char m[100]; 
-    printf("Msg: "); 
+    printf("Enter the message to be transmitted: "); 
     fgets(m, sizeof(m), stdin);
 
     int n = (strlen(m) + 2) / 3; 
@@ -39,10 +39,10 @@ int main()
         p[j] = temp;
     }
 
-    printf("\nPackets Received: "); 
+    printf("\nPackets Received in following order: "); 
     for (int i = 0; i < n; i++) printf("%d ", p[i].id);
 
-    printf("\nPackets in order: "); 
+    printf("\nPackets in order after sorting: "); 
     for (int i = 1; i <= n; i++) printf("%d ", i);
 
     free(p);
@@ -52,7 +52,7 @@ int main()
 
 
 //Example
-// Msg: A computer network is a set of devices connected through links
+// Enter the message to be transmitted: A computer network is a set of devices connected through links
 // Packet No.  Data
 
 // 1:A c
@@ -77,5 +77,8 @@ int main()
 // 20:lin
 // 21:ks
 
-// Packets Received: 1 16 5 21 12 10 20 18 15 8 7 19 13 14 2 9 17 11 3 4 6
-// Packets in order: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21
+// Packets Received in following order: 16 6 2 11 3 1 10 4 8 13 12 7 14 19 18 17 21 20 15 5 9
+// Packets in order after sorting: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21
+
+// Reassembled message after sorting:
+// A computer network is a set of devices connected through links

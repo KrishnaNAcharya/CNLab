@@ -6,47 +6,70 @@
 #include <string.h>
 #include <time.h>
 
-typedef struct 
-{ 
-    int id; 
-    char t[4]; 
-} P;
-
-int main() 
+struct Packet
 {
-    char m[100]; 
-    printf("Enter the message to be transmitted: "); 
-    fgets(m, sizeof(m), stdin);
+    int id;
+    char data[4];
+};
 
-    int n = (strlen(m) + 2) / 3; 
-    P *p = (P*)malloc(n * sizeof(P));
+int main()
+{
+    char msg[100];
+    printf("Enter the message to be transmitted: ");
+    fgets(msg, sizeof(msg), stdin);
+    msg[strcspn(msg, "\n")] = '\0';
 
-    for (int i = 0; i < n; i++) 
+    int len = strlen(msg);
+    int n = (len + 2) / 3;
+    struct Packet p[50];
+
+    for (int i = 0; i < n; i++)
     {
-        p[i] = (P){i + 1, ""};
-        memcpy(p[i].t, m + i * 3, 3);
+        p[i].id = i + 1;
+        strncpy(p[i].data, msg + i * 3, 3);
+        p[i].data[3] = '\0';
     }
 
     printf("Packet No.  Data\n\n");
-    for (int i = 0; i < n; i++) printf("%d:%s\n", p[i].id, p[i].t);
+    for (int i = 0; i < n; i++)
+        printf("%d:%s\n", p[i].id, p[i].data);
 
+    // Shuffle
     srand(time(0));
-    for (int i = n - 1; i > 0; i--) 
+    for (int i = n - 1; i > 0; i--)
     {
         int j = rand() % (i + 1);
-        P temp = p[i];
+        struct Packet temp = p[i];
         p[i] = p[j];
         p[j] = temp;
     }
 
-    printf("\nPackets Received in following order: "); 
-    for (int i = 0; i < n; i++) printf("%d ", p[i].id);
+    printf("\nPackets Received in following order: ");
+    for (int i = 0; i < n; i++)
+        printf("%d ", p[i].id);
 
-    printf("\nPackets in order after sorting: "); 
-    for (int i = 1; i <= n; i++) printf("%d ", i);
+    // Sort (bubble sort)
+    for (int i = 0; i < n - 1; i++)
+        for (int j = 0; j < n - i - 1; j++)
+            if (p[j].id > p[j + 1].id)
+            {
+                struct Packet temp = p[j];
+                p[j] = p[j + 1];
+                p[j + 1] = temp;
+            }
 
-    free(p);
+    printf("\nPackets in order after sorting: ");
+    for (int i = 0; i < n; i++)
+        printf("%d ", p[i].id);
+
+    printf("\n\nReassembled message after sorting:\n");
+    for (int i = 0; i < n; i++)
+        printf("%s", p[i].data);
+    printf("\n");
+
+    return 0;
 }
+
 
 
 

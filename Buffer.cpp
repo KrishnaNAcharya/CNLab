@@ -17,7 +17,6 @@ int main()
     char msg[100];
     printf("Enter the message to be transmitted: ");
     fgets(msg, sizeof(msg), stdin);
-    msg[strcspn(msg, "\n")] = '\0';
 
     int len = strlen(msg);
     int n = (len + 2) / 3;

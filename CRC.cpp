@@ -6,7 +6,7 @@
 int main()
 {
     char data[128], gen[32], code[160], rem[32], recv[160];
-    int pos, i, j;
+    int pos, i, j, e;
 
     printf("Enter Data and Generator: ");
     scanf("%s %s", data, gen);
@@ -33,20 +33,32 @@ int main()
     printf("Checksum: %s\n", rem);
     printf("Codeword: %s\n", code);
 
-    printf("Enter error position (0-based): ");
-    scanf("%d", &pos);
-    recv[pos] ^= 1; // Flip the bit using XOR
+    printf("Enter 1 if there's an error needed to be transmitted, 0 otherwise: ");
+    scanf("%d", &e);
+    if (e == 1)
+    {
+        printf("Enter error position : ");
+        scanf("%d", &pos);
+        recv[pos-1] ^= 1; // Flip the bit using XOR
+    }
     printf("Data with error: %s\n", recv);
 
     return 0;
 }
 
 
-
 //Example
-// Enter No of bits, Data, Gen: 8 11010011101100 1011
-// Modified data: 11010011101100000
-// Checksum: 100
-// Final codeword: 11010011101100100
-// Error position: 5
-// Data with error: 11010111101100100
+//Enter Data and Generator: 1101011011 10011
+//Modified Data padded with n-1 zero: 11010110110000
+//CRC value: 1110
+//Final data sent: 11010110111110
+//Enter 1 if there's an error needed to be transmitted, 0 otherwise: 1
+//Enter error position : 3
+//Data recieved through transmission: 11110110111110
+
+//Enter Data and Generator: 1101011011 10011
+//Modified Data padded with n-1 zero: 11010110110000
+//CRC value: 1110
+//Final data sent: 11010110111110
+//Enter 1 if there's an error needed to be transmitted, 0 otherwise: 0
+//Data recieved through transmission: 11010110111110

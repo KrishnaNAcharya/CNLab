@@ -13,7 +13,7 @@ int main()
 
     int dlen = strlen(data), glen = strlen(gen);
     sprintf(code, "%s%0*d", data, glen - 1, 0);
-    printf("Modified Data: %s\n", code);
+    printf("Modified Data padded with n-1 zero: %s\n", code);
 
     strncpy(rem, code, glen);
     for (i = 0; i <= strlen(code) - glen; i++)
@@ -30,8 +30,8 @@ int main()
     strcpy(code + dlen, rem);
     strcpy(recv, code);
 
-    printf("Checksum: %s\n", rem);
-    printf("Codeword: %s\n", code);
+    printf("CRC value: %s\n", rem);
+    printf("Final data sent: %s\n", code);
 
     printf("Enter 1 if there's an error needed to be transmitted, 0 otherwise: ");
     scanf("%d", &e);
@@ -41,7 +41,7 @@ int main()
         scanf("%d", &pos);
         recv[pos-1] ^= 1; // Flip the bit using XOR
     }
-    printf("Data with error: %s\n", recv);
+    printf("Data recieved through transmission: %s\n", recv);
 
     return 0;
 }

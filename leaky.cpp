@@ -4,7 +4,7 @@
 
 int main() 
 {
-    int n, time[50], size[50],bucket = 0, bsize, rate;
+    int n, time[50], size[50],bucket = 0, bsize, rate, t = 1;
 
     
     printf("Enter number of packets: ");
@@ -19,7 +19,7 @@ int main()
     printf("Enter bucket size and output rate: ");
     scanf("%d %d", &bsize, &rate);
 
-    int t = 1, i = 0;
+    int  i = 0;
     while (t <= time[n - 1] || bucket > 0) 
     {
         printf("\n At time %d", t);

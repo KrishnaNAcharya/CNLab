@@ -4,27 +4,28 @@
 
 int main() 
 {
-    int n, time[50], size[50], bucket = 0, bsize, rate, t = 1, i = 0;
+    int n, time[50], size[50],bucket = 0, bsize, rate;
 
-    printf("Packets: ");
-    scanf("%d", &n);
     
-    for (; i < n; i++) 
+    printf("Enter number of packets: ");
+    scanf("%d", &n);
+    printf("Enter packets in order of their arrival time: \n");
+    for (int i = 0; i < n; i++) 
     {
-        printf("Time & Size: ");
+        printf("Enter time and size of packet %d: ", i + 1);
         scanf("%d %d", &time[i], &size[i]);
     }
 
-    printf("Bucket size & Out rate: ");
+    printf("Enter bucket size and output rate: ");
     scanf("%d %d", &bsize, &rate);
 
-    i = 0;
-
+    int t = 1, i = 0;
     while (t <= time[n - 1] || bucket > 0) 
     {
-        printf("\nTime %d", t);
+        printf("\n At time %d", t);
 
-        if (time[i] == t) 
+        // Insert packet if its time has come
+        if (i < n && time[i] == t) 
         {
             if (bucket + size[i] <= bsize) 
             {
@@ -33,20 +34,22 @@ int main()
             } 
             else 
             {
-                printf("\nDropped %d bytes", size[i]);
+                printf("\nTransferred %d bytes", size[i]);
             }
             i++;
         }
 
+        // Send from bucket
         int send = (bucket < rate) ? bucket : rate;
         bucket -= send;
-        printf("\nSent %d bytes\nIn bucket: %d", send, bucket);
+        printf("\nSent packet of %d bytes\nIn bucket: %d", send, bucket);
 
         t++;
     }
 
     return 0;
 }
+
 
 
 // Example
